@@ -23,7 +23,39 @@ class SenderImageTableViewCell: BaseMessageTableViewCell {
     }
     
     private func commonInit() {
-        self.textMessage.contentsGravity = kCAGravityResizeAspect
+        setupMessageLayer()
     }
+    
+    private func setupMessageLayer() {
+        
+        self.textMessage.anchorPoint = CGPoint(x: 0, y: 0.5)
+        self.textMessage.contentsGravity = kCAGravityResizeAspect
+        self.textMessage.backgroundColor = UIColor.darkGrayColor().CGColor
+        self.textMessage.cornerRadius = 20
+        self.textMessage.frame.size = calculateSizeOfBubbleImage()
+        self.textMessage.contents = UIImage(named: "raketa")?.CGImage
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.textMessage.position = CGPoint(x: 10, y: self.bounds.height / 2)
+    }
+    
+    private func calculateSizeOfBubbleImage() -> CGSize {
+        var size = CGSize()
+        size = CGSizeMake(120, 120)
+        return size
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupTableView()
+        
     }
     
     func setupTableView() {
@@ -40,6 +41,7 @@ class ViewController: UIViewController {
         tableView.registerClass(SenderImageTableViewCell.self, forCellReuseIdentifier: "senderImageCell")
         
         self.view.addSubview(tableView)
+//        self.tableView.setContentOffset(CGPointMake(0, CGFloat.max), animated: false)
     }
     
 
@@ -60,11 +62,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 100
+        return 20
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        var height: CGFloat = 50
+
+        // увеличиваем размер ячейки под картинку
+        if indexPath.row == 7 {
+            height = 130
+        } else if indexPath.row == 2 {
+            height = 130
+        }
+        
+        return height
     }
     
     
@@ -73,6 +84,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell: UITableViewCell 
         
         switch indexPath.row {
+        case 2:
+            cell = tableView.dequeueReusableCellWithIdentifier("senderImageCell", forIndexPath: indexPath)
+        case 7:
+            cell = tableView.dequeueReusableCellWithIdentifier("myImageCell", forIndexPath: indexPath)
         case let i where i % 2 == 0:
             cell = tableView.dequeueReusableCellWithIdentifier("senderCell", forIndexPath: indexPath)
         default:
