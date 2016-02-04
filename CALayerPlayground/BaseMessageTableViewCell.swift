@@ -12,7 +12,6 @@ class BaseMessageTableViewCell: UITableViewCell {
 
     private(set) var textMessage: CALayer!
     
-    
     class func messageLayerClass() -> CALayer.Type {
         return CALayer.self
     }

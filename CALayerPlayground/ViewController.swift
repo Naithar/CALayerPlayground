@@ -24,12 +24,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupTableView()
-        
     }
     
     func setupTableView() {
         
-        tableView.frame = CGRectMake(0, 0, 320, 640)
+        tableView.frame = CGRectMake(0, 0, 320, 568)
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
@@ -43,7 +42,6 @@ class ViewController: UIViewController {
         self.view.addSubview(tableView)
 //        self.tableView.setContentOffset(CGPointMake(0, CGFloat.max), animated: false)
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,9 +49,9 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
     // MARK: - Table view data source
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -103,7 +101,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell #\(indexPath.row)!")
+        print("You selected cell number \(indexPath.row)!")
     }
     
     

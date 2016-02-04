@@ -47,15 +47,4 @@ class SenderImageTableViewCell: BaseMessageTableViewCell {
         size = CGSizeMake(120, 120)
         return size
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
