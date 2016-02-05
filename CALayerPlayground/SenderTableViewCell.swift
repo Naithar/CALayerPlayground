@@ -10,6 +10,8 @@ import UIKit
 
 class SenderTableViewCell: BaseMessageTableViewCell {
     
+    // MARK: Setup
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -27,17 +29,17 @@ class SenderTableViewCell: BaseMessageTableViewCell {
     }
     
     private func setupMessagesLayer() {
-        self.textMessage.anchorPoint = CGPoint(x: 0, y: 0.5)
+        self.messageLayer.anchorPoint = CGPoint(x: 0, y: 0.5)
         
-        self.textMessage.backgroundColor = UIColor.darkGrayColor().CGColor
-        self.textMessage.cornerRadius = 20
-        self.textMessage.frame.size = calculateSizeOfBubleImage()
+        self.messageLayer.backgroundColor = UIColor.darkGrayColor().CGColor
+        self.messageLayer.cornerRadius = 20
+        self.messageLayer.frame.size = calculateSizeOfBubleImage()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.textMessage.position = CGPoint(x: 10, y: self.bounds.height / 2)
+        self.messageLayer.position = CGPoint(x: 10, y: self.bounds.height / 2)
     }
     
     private func calculateSizeOfBubleImage() -> CGSize{

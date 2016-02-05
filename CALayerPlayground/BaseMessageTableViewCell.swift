@@ -9,8 +9,12 @@
 import UIKit
 
 class BaseMessageTableViewCell: UITableViewCell {
+    
+    // MARK: Property
 
-    private(set) var textMessage: CALayer!
+    private(set) var messageLayer: CALayer!
+    
+    // MARK: Setup
     
     class func messageLayerClass() -> CALayer.Type {
         return CALayer.self
@@ -33,8 +37,8 @@ class BaseMessageTableViewCell: UITableViewCell {
     }
 
     private func setupMessageLayer() {
-        self.textMessage = self.dynamicType.messageLayerClass().init()
-        self.contentView.layer.addSublayer(self.textMessage)
-        self.textMessage.masksToBounds = true
+        self.messageLayer = self.dynamicType.messageLayerClass().init()
+        self.contentView.layer.addSublayer(self.messageLayer)
+        self.messageLayer.masksToBounds = true
     }
 }
