@@ -34,22 +34,24 @@ class MyImageTableViewCell: BaseMessageTableViewCell {
     private func setupMessageLayer() {
         
         self.messageLayer.anchorPoint = CGPoint(x: 1, y: 0.5)
-        self.messageLayer.contentsGravity = kCAGravityResizeAspectFill
-        self.messageLayer.backgroundColor = UIColor.lightGrayColor().CGColor
+        self.messageLayer.contentLayer.contentsGravity = kCAGravityResizeAspectFill
         self.messageLayer.frame.size = calculateSizeOfBubbleImage()
         
         if let bubble = UIImage(named: "rightBubbleBackground") {
             self.mask.contentsScale = bubble.scale
             self.mask.contents = bubble.CGImage
-            //contentCenter defines stretchable image portion. values from 0 to 1. requires use of points (for iPhone5 - pixel = points / 2.).
             self.mask.contentsCenter = CGRect(x: bubbleRightCapInsets.left/bubble.size.width,
                 y: bubbleRightCapInsets.top/bubble.size.height,
                 width: 1/bubble.size.width,
                 height: 1/bubble.size.height);
         }
         
-        self.messageLayer.contents = UIImage(named: "cat")?.CGImage
-        self.messageLayer.mask = self.mask
+        self.messageLayer.masksToBounds = false
+        self.messageLayer.contentLayer.contents = UIImage(named: "cat")?.CGImage
+        self.messageLayer.contentLayer.mask = self.mask
+        self.messageLayer.contentLayer.masksToBounds = true
+        
+
     }
     
     override func layoutSubviews() {
@@ -57,6 +59,12 @@ class MyImageTableViewCell: BaseMessageTableViewCell {
         
         self.messageLayer.position = CGPoint(x: self.bounds.width - 10, y: self.bounds.height / 2)
         self.mask.frame = self.messageLayer.bounds
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.messageLayer.frame.size = CGSize(width: 150, height: 50)
     }
     
     private func calculateSizeOfBubbleImage() -> CGSize {

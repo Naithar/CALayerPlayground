@@ -12,12 +12,12 @@ class BaseMessageTableViewCell: UITableViewCell {
     
     // MARK: Property
 
-    private(set) var messageLayer: CALayer!
+    private(set) var messageLayer: MessageLayer!
     
     // MARK: Setup
     
-    class func messageLayerClass() -> CALayer.Type {
-        return CALayer.self
+    class func messageLayerClass() -> MessageLayer.Type {
+        return MessageLayer.self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,6 +39,5 @@ class BaseMessageTableViewCell: UITableViewCell {
     private func setupMessageLayer() {
         self.messageLayer = self.dynamicType.messageLayerClass().init()
         self.contentView.layer.addSublayer(self.messageLayer)
-        self.messageLayer.masksToBounds = true
     }
 }

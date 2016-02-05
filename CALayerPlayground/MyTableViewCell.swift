@@ -30,8 +30,7 @@ class MyTableViewCell: BaseMessageTableViewCell {
     
     private func setupMessageLayer() {
         self.messageLayer.anchorPoint = CGPoint(x: 1, y: 0.5)
-        self.messageLayer.backgroundColor = UIColor.lightGrayColor().CGColor
-        self.messageLayer.cornerRadius = 20
+        self.messageLayer.backgroundColor = UIColor.clearColor().CGColor
         self.messageLayer.frame.size = self.calculateSizeOfBubbleImage()
     }
     

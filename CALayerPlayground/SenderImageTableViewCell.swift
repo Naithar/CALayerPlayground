@@ -45,6 +45,8 @@ class SenderImageTableViewCell: BaseMessageTableViewCell {
         self.messageLayer.position = CGPoint(x: 10, y: self.bounds.height / 2)
     }
     
+    
+    
     private func calculateSizeOfBubbleImage() -> CGSize {
         var size = CGSize()
         size = CGSizeMake(120, 120)

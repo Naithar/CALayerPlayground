@@ -68,9 +68,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
         // увеличиваем размер ячейки под картинку
         if indexPath.row == 7 {
-            height = 130
+            height = 200
         } else if indexPath.row == 2 {
-            height = 130
+            height = 200
         }
         
         return height
